@@ -336,11 +336,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Resize the image to make it lighter to work with, but the original quality would be recovery in the share
     func resizeImageToWork (){
         //Resizing it for easy work
-        let newSize = CGSize(width: (originalImage?.size.width)!/3, height: (originalImage?.size.height)!/3)
-        UIGraphicsBeginImageContext(newSize)
-        originalImage?.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
-        filteredImage = imageProcessor(imagen: UIGraphicsGetImageFromCurrentImageContext())
-        UIGraphicsEndImageContext()
+        if originalImage?.size.width > 500 && originalImage?.size.height > 500 {
+            let newSize = CGSize(width: (originalImage?.size.width)!/3, height: (originalImage?.size.height)!/3)
+            UIGraphicsBeginImageContext(newSize)
+            originalImage?.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
+            filteredImage = imageProcessor(imagen: UIGraphicsGetImageFromCurrentImageContext())
+            UIGraphicsEndImageContext()
+        }else{
+            filteredImage = imageProcessor(imagen: originalImage!)
+        }
+        
     }
     
     
