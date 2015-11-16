@@ -368,7 +368,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Switch between the original image and the filtered image
     func switchImages(){
         if filteredImage?.imagen != nil && compareButton.enabled {
-            UIView.transitionWithView(imageView, duration: 0.2, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            UIView.transitionWithView(imageView, duration: 0.4, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                 
                 if self.imageView.image == self.originalImage { //show the filtered image
                     self.imageView.image = self.filteredImage?.imagen
